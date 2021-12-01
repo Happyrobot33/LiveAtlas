@@ -32,7 +32,7 @@ export const createMarker = (options: LiveAtlasMarker, converter: Function): Mar
 */
 
 	if(options.desc) {
-		marker.bindPopup(options.desc!);
+		marker.bindPopup("This is a test");
 	}
 	
 	marker.bindPopup("Testing this shit");
