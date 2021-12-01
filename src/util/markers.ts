@@ -23,7 +23,16 @@ import {GenericMarker} from "@/leaflet/marker/GenericMarker";
 import {LiveAtlasMarker} from "@/index";
 
 export const createMarker = (options: LiveAtlasMarker, converter: Function): Marker => {
-	const marker = new GenericMarker(converter(options.location), options);
+	const marker = new GenericMarker(converter(options.location), {
+		icon: new GenericIcon({
+			icon: options.icon,
+			label: options.label,
+			iconSize: options.dimensions,
+			isHtml: options.isHTML,
+		}),
+		maxZoom: options.maxZoom,
+		minZoom: options.minZoom,
+	});
 
 	marker.on('click', (e: LeafletMouseEvent) => {
 		e.target._map.panTo(e.target.getLatLng());
@@ -56,7 +65,7 @@ export const updateMarker = (marker: Marker | undefined, options: LiveAtlasMarke
 				icon: options.icon,
 				label: options.label,
 				iconSize: options.dimensions,
-				isHtml: options.isLabelHTML,
+				isHtml: options.isHTML,
 			});
 		}
 	}
@@ -71,12 +80,17 @@ export const updateMarker = (marker: Marker | undefined, options: LiveAtlasMarke
 	return marker;
 };
 
-const createPopup = (options: LiveAtlasMarker) => {
+export const createPopup = (options: LiveAtlasMarker) => {
 	const popup = document.createElement('span');
 
 	if (options.popupContent) {
 		popup.classList.add('MarkerPopup');
 		popup.insertAdjacentHTML('afterbegin', options.popupContent);
+	} else if (options.isHTML) {
+		popup.classList.add('MarkerPopup');
+		popup.insertAdjacentHTML('afterbegin', options.label);
+	} else {
+		popup.textContent = options.label;
 	}
 
 	return popup;
