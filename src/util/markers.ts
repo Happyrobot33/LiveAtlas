@@ -77,7 +77,7 @@ export const createPopup = (options: LiveAtlasMarker) => {
 	if (options.popupContent) {
 		popup.classList.add('MarkerPopup');
 		popup.insertAdjacentHTML('afterbegin', options.popupContent);
-	} else if (options.isHTML) {
+	} else if (options.isLabelHTML) {
 		popup.classList.add('MarkerPopup');
 		popup.insertAdjacentHTML('afterbegin', options.label);
 	} else {
