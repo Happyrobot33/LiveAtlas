@@ -31,8 +31,8 @@ export const createMarker = (options: LiveAtlasMarker, converter: Function): Mar
 	});
 */
 
-	if(options.popupContent) {
-		marker.bindPopup(options.popupContent!);
+	if(options.desc) {
+		marker.bindPopup(options.desc!);
 	}
 
 	return marker;
@@ -78,7 +78,7 @@ export const createPopup = (options: LiveAtlasMarker) => {
 
 	if (options.popupContent) {
 		popup.classList.add('MarkerPopup');
-		popup.insertAdjacentHTML('afterbegin', options.popupContent);
+		popup.insertAdjacentHTML('afterbegin', options.desc);
 	} else if (options.isLabelHTML) {
 		popup.classList.add('MarkerPopup');
 		popup.insertAdjacentHTML('afterbegin', options.label);

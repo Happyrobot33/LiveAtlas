@@ -234,7 +234,7 @@ interface LiveAtlasMarker {
 	location: Coordinate;
 	minZoom?: number;
 	maxZoom?: number;
-	popupContent?: string;
+	desc?: string;
 }
 
 interface LiveAtlasPath {
