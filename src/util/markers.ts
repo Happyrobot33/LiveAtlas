@@ -37,7 +37,7 @@ export const createMarker = (options: LiveAtlasMarker, converter: Function): Mar
 	}
 */
 
-	marker.bindPopup(this.createPopup(options)).openPopup();
+	marker.bindPopup(createPopup(options)).openPopup();
 
 	return marker;
 };
