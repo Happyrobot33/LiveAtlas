@@ -30,8 +30,8 @@ export const createMarker = (options: LiveAtlasMarker, converter: Function): Mar
 		e.target._map.panTo(e.target.getLatLng());
 	});
 
-	if(options.popupContent != null) {
-		marker.bindPopup(() => createPopup(options.popupContent!));
+	if(options.popupContent) {
+		marker.bindPopup(options.popupContent!);
 	}
 
 	return marker;
