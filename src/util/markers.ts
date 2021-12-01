@@ -56,7 +56,7 @@ export const updateMarker = (marker: Marker | undefined, options: LiveAtlasMarke
 				icon: options.icon,
 				label: options.label,
 				iconSize: options.dimensions,
-				isHtml: options.isHTML,
+				isHtml: options.isLabelHTML,
 			});
 		}
 	}
