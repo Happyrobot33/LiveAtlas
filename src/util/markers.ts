@@ -66,8 +66,8 @@ export const updateMarker = (marker: Marker | undefined, options: LiveAtlasMarke
 	marker.closePopup();
 	marker.unbindPopup();
 
-	if(options.popupContent) {
-		marker.bindPopup(() => createPopup(options));
+	if(options.desc) {
+		marker.bindPopup(options.desc!);
 	}
 
 	return marker;
@@ -76,7 +76,7 @@ export const updateMarker = (marker: Marker | undefined, options: LiveAtlasMarke
 export const createPopup = (options: LiveAtlasMarker) => {
 	const popup = document.createElement('span');
 
-	if (options.popupContent) {
+	if (options.desc) {
 		popup.classList.add('MarkerPopup');
 		popup.insertAdjacentHTML('afterbegin', options.desc);
 	} else if (options.isLabelHTML) {
