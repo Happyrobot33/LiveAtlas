@@ -30,7 +30,7 @@ export const createMarker = (options: LiveAtlasMarker, converter: Function): Mar
 	});
 
 	if(options.popupContent) {
-		marker.bindPopup(() => createPopup(options, {autoPan: false}));
+		marker.bindPopup(() => createPopup(options), {autoPan: false});
 	}
 
 	return marker;
