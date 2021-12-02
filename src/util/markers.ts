@@ -25,14 +25,13 @@ import {LiveAtlasMarker} from "@/index";
 export const createMarker = (options: LiveAtlasMarker, converter: Function): Marker => {
 	const marker = new GenericMarker(converter(options.location), options);
 
-	if(options.popupContent) {
-		marker.bindPopup(() => createPopup(options));
-	}
-	
 	marker.on('click', (e: LeafletMouseEvent) => {
 		e.target._map.panTo(e.target.getLatLng());
-		marker.openPopup();
 	});
+
+	if(options.popupContent) {
+		marker.bindPopup(() => createPopup(options, {autoPan: false}));
+	}
 
 	return marker;
 };
